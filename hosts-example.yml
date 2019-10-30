@@ -1,9 +1,0 @@
-poa_core:
-    hosts:
-        127.0.0.1:
-            ansible_user: centos
-
-poa_sokol:
-    hosts:
-        127.0.0.2:
-            ansible_user: centos
