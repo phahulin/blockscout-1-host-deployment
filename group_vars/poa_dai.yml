@@ -1,0 +1,14 @@
+---
+application_params:
+    - env:
+        - ETHEREUM_JSONRPC_VARIANT: parity
+
+blockchain_client_params:
+    - binary_url: https://releases.parity.io/ethereum/v2.6.2/x86_64-unknown-linux-gnu/parity
+    - binary_sha256: '593c2f622fbb04a4baccd3388b66d2d1b1a5bd207201335ab5b26a3ed95d182f'
+    # - spec_chain_id:
+    - spec_url: https://raw.githubusercontent.com/poanetwork/poa-chain-spec/dai/spec.json
+    - bootnodes_url: https://raw.githubusercontent.com/poanetwork/poa-chain-spec/dai/bootnodes.txt
+
+database_params:
+    - lalala: 1234

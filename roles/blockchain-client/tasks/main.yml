@@ -1,0 +1,6 @@
+---
+- import_tasks: parity.yml
+  when: "{{ application_params.env.ETHEREUM_JSONRPC_VARIANT }} == 'parity'"
+
+- import_tasks: geth.yml
+  when: "{{ application_params.env.ETHEREUM_JSONRPC_VARIANT }} == 'geth'"

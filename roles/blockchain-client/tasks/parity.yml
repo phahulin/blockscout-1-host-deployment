@@ -1,0 +1,35 @@
+---
+- name: Create directory for storing parity files
+  file:
+    path: "{{ work_dir }}/parity"
+    state: directory
+
+- name: Download parity binary
+  get_url:
+    url: "{{ blockchain_client_params.binary_url }}"
+    checksum: "sha256:{{ blockchain_client_params.binary_sha256 }}"
+    dest: "{{ work_dir }}/parity/parity"
+    mode: "0755"
+  notify:
+    - restart parity
+
+- name: Create parity configuration file
+  template:
+    src: parity-config.j2
+    dest: "{{ work_dir }}/parity/node.toml"
+
+- name: Install parity service
+  template:
+    src: parity-service.j2
+    dest: /etc/systemd/system/parity.service
+    owner: root
+    group: root
+    mode: "0755"
+  notify:
+    - restart poa-parity
+
+- name: Ensure parity service is running and enabled to start at boot
+  service:
+    name: parity
+    enabled: yes
+    state: started

@@ -1,0 +1,10 @@
+---
+- name: restart parity
+  service:
+    name: parity
+    state: restarted
+
+- name: restart geth
+  service:
+    name: geth
+    state: restarted
